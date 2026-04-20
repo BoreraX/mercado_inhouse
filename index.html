@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050505">
+    <title>Mercado Residencial Alto do Prata</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <img
+          class="market-logo"
+          src="assets/logo-inhouse-market.svg"
+          alt="Logo do Mercado Residencial Alto do Prata"
+        >
+        <div class="header-copy">
+          <p class="eyebrow">Mini-mercado</p>
+          <h1>Mercado RESIDENCIAL ALTO DO PRATA</h1>
+          <p>Use esta página quando o produto não aparecer no app oficial do mercado.</p>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="notice" aria-label="Observações importantes">
+          <p>Disponibilidade sujeita à conferência.</p>
+          <p>Após o pagamento, envie o comprovante.</p>
+        </section>
+
+        <section class="how-to" aria-labelledby="how-to-title">
+          <h2 id="how-to-title">Como comprar</h2>
+          <ol>
+            <li>Se o produto não apareceu no app oficial, procure por ele aqui.</li>
+            <li>Adicione os itens na sacola e confira o valor total.</li>
+            <li>Faça o Pix, envie o pedido pelo WhatsApp e mande o comprovante.</li>
+          </ol>
+        </section>
+
+        <section class="search-block" aria-labelledby="search-title">
+          <div>
+            <h2 id="search-title">Produtos</h2>
+            <p id="product-count" class="muted">Carregando produtos...</p>
+          </div>
+          <label for="search-input">Pesquisar por nome</label>
+          <input
+            id="search-input"
+            type="search"
+            autocomplete="off"
+            placeholder="Ex.: leite, café, biscoito"
+          >
+        </section>
+
+        <section id="products-grid" class="products-grid" aria-live="polite">
+          <p class="empty-state">Carregando produtos...</p>
+        </section>
+      </main>
+    </div>
+
+    <div id="cart-bar" class="cart-bar" aria-live="polite">
+      <div class="cart-bar-inner">
+        <div>
+          <strong>Sacola</strong>
+          <span id="cart-summary">Vazia</span>
+        </div>
+        <button id="open-cart-button" class="primary-button" type="button">Ver sacola</button>
+      </div>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay hidden"></div>
+
+    <aside
+      id="cart-panel"
+      class="cart-panel hidden"
+      aria-labelledby="cart-title"
+      aria-modal="true"
+      role="dialog"
+    >
+      <div class="cart-panel-header">
+        <div>
+          <p class="eyebrow">Pedido</p>
+          <h2 id="cart-title">Sacola</h2>
+        </div>
+        <button id="close-cart-button" class="ghost-button" type="button" aria-label="Fechar sacola">
+          Fechar
+        </button>
+      </div>
+
+      <div id="cart-items" class="cart-items"></div>
+
+      <div class="cart-footer">
+        <div class="total-line">
+          <span>Total</span>
+          <strong id="cart-total">R$ 0,00</strong>
+        </div>
+
+        <section class="pix-box" aria-labelledby="pix-title">
+          <h3 id="pix-title">Pagamento Pix</h3>
+          <p class="muted">Faça o Pix manualmente e depois envie o pedido no WhatsApp.</p>
+          <dl>
+            <div>
+              <dt>Chave Pix</dt>
+              <dd id="pix-key"></dd>
+            </div>
+            <div>
+              <dt>Recebedor</dt>
+              <dd id="receiver-name"></dd>
+            </div>
+          </dl>
+          <button id="copy-pix-button" class="secondary-button" type="button">Copiar chave Pix</button>
+        </section>
+
+        <p class="checkout-note">Disponibilidade sujeita à conferência. Após o pagamento, envie o comprovante.</p>
+        <button id="whatsapp-button" class="whatsapp-button" type="button">
+          Enviar pedido no WhatsApp
+        </button>
+      </div>
+    </aside>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  </body>
+</html>
