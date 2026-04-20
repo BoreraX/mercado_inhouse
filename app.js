@@ -1,5 +1,6 @@
 const CONFIG = {
   dataFile: "produtos.csv",
+  fallbackDataFiles: ["data/produtos.csv"],
   adminWhatsApp: "5511999999999",
   pixKey: "pix@mercadinhodocondominio.com.br",
   receiverName: "Mercado RESIDENCIAL ALTO DO PRATA",
@@ -63,16 +64,10 @@ function fillCheckoutInfo() {
 
 async function loadProducts() {
   try {
-    const response = await fetch(CONFIG.dataFile, { cache: "no-store" });
-
-    if (!response.ok) {
-      throw new Error(`Arquivo não encontrado: ${CONFIG.dataFile}`);
-    }
-
-    const text = await response.text();
-    const rows = CONFIG.dataFile.toLowerCase().endsWith(".json")
-      ? JSON.parse(text)
-      : parseCsv(text);
+    const productData = await fetchProductData();
+    const rows = productData.file.toLowerCase().endsWith(".json")
+      ? JSON.parse(productData.text)
+      : parseCsv(productData.text);
 
     state.products = rows
       .map(normalizeProduct)
@@ -87,12 +82,29 @@ async function loadProducts() {
     elements.productCount.textContent = "Não foi possível carregar a base.";
     elements.productsGrid.innerHTML = `
       <p class="empty-state">
-        Não consegui ler a lista de produtos. Confira o arquivo <strong>${escapeHtml(CONFIG.dataFile)}</strong>
+        Não consegui ler a lista de produtos. Confira o arquivo <strong>produtos.csv</strong>
         e abra a página por um servidor local ou hospedagem.
       </p>
     `;
     console.error(error);
   }
+}
+
+async function fetchProductData() {
+  const files = [CONFIG.dataFile, ...(CONFIG.fallbackDataFiles || [])];
+
+  for (const file of files) {
+    const response = await fetch(`${file}?v=${Date.now()}`, { cache: "no-store" });
+
+    if (response.ok) {
+      return {
+        file,
+        text: await response.text(),
+      };
+    }
+  }
+
+  throw new Error(`Arquivos não encontrados: ${files.join(", ")}`);
 }
 
 function parseCsv(text) {
