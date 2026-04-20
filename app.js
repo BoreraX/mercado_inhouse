@@ -26,6 +26,8 @@ function cacheElements() {
   elements.productsGrid = document.querySelector("#products-grid");
   elements.productCount = document.querySelector("#product-count");
   elements.searchInput = document.querySelector("#search-input");
+  elements.introScreen = document.querySelector("#intro-screen");
+  elements.introStartButton = document.querySelector("#intro-start-button");
   elements.cartSummary = document.querySelector("#cart-summary");
   elements.cartTotal = document.querySelector("#cart-total");
   elements.cartItems = document.querySelector("#cart-items");
@@ -42,6 +44,7 @@ function cacheElements() {
 
 function bindEvents() {
   elements.searchInput.addEventListener("input", applySearch);
+  elements.introStartButton.addEventListener("click", closeIntroScreen);
   elements.productsGrid.addEventListener("click", handleProductClick);
   elements.cartItems.addEventListener("click", handleCartClick);
   elements.openCartButton.addEventListener("click", openCart);
@@ -52,6 +55,7 @@ function bindEvents() {
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      closeIntroScreen();
       closeCart();
     }
   });
@@ -60,6 +64,12 @@ function bindEvents() {
 function fillCheckoutInfo() {
   elements.pixKey.textContent = CONFIG.pixKey;
   elements.receiverName.textContent = CONFIG.receiverName;
+  elements.introStartButton.focus();
+}
+
+function closeIntroScreen() {
+  elements.introScreen.classList.add("hidden");
+  elements.searchInput.focus();
 }
 
 async function loadProducts() {

@@ -4,6 +4,8 @@ MVP web estático para apoiar compras no mini-mercado do condomínio quando o pr
 
 O objetivo é reduzir problemas na compra: se o morador procurar no app oficial e não encontrar o produto, ele usa esta página para localizar o item, pagar via Pix e enviar o pedido para conferência.
 
+Ao abrir, o app mostra uma tela inicial explicando quando usar a página e o passo a passo: pesquisar, colocar na sacola, pagar via Pix, enviar no WhatsApp e mandar o comprovante.
+
 ## Como funciona para o morador
 
 1. Escaneia o QR Code do mercado.

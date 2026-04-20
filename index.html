@@ -5,10 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#050505">
     <title>Mercado Residencial Alto do Prata</title>
-    <link rel="stylesheet" href="styles.css?v=20260420-2">
-    <script src="app.js?v=20260420-2" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260420-3">
+    <script src="app.js?v=20260420-3" defer></script>
   </head>
   <body>
+    <div
+      id="intro-screen"
+      class="intro-screen"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="intro-title"
+      aria-describedby="intro-description"
+    >
+      <div class="intro-panel">
+        <img
+          class="intro-logo"
+          src="logo-inhouse-market.svg"
+          alt="Logo do Mercado Residencial Alto do Prata"
+        >
+        <p class="eyebrow">Compra alternativa</p>
+        <h1 id="intro-title">Não encontrou o produto no app?</h1>
+        <p id="intro-description">
+          Use esta página para pesquisar o produto, colocar na sacola e pagar pelo Pix manualmente.
+        </p>
+        <ol class="intro-steps">
+          <li>Pesquise o produto e adicione na sacola.</li>
+          <li>Confira o valor total antes de pagar.</li>
+          <li>Faça o Pix pelo app do seu banco.</li>
+          <li>Clique em enviar para o WhatsApp e mande o comprovante.</li>
+        </ol>
+        <p class="intro-note">Produtos e comprovante serão conferidos pelo administrador.</p>
+        <button id="intro-start-button" class="primary-button intro-button" type="button">
+          Entendi, começar
+        </button>
+      </div>
+    </div>
+
     <div class="app-shell">
       <header class="app-header">
         <img
@@ -32,9 +64,9 @@
         <section class="how-to" aria-labelledby="how-to-title">
           <h2 id="how-to-title">Como comprar</h2>
           <ol>
-            <li>Se o produto não apareceu no app oficial, procure por ele aqui.</li>
-            <li>Adicione os itens na sacola e confira o valor total.</li>
-            <li>Faça o Pix, envie o pedido pelo WhatsApp e mande o comprovante.</li>
+            <li>Procure o produto, adicione na sacola e confira o total.</li>
+            <li>Faça o Pix pelo banco e envie o pedido pelo WhatsApp.</li>
+            <li>Depois, mande o comprovante para o administrador.</li>
           </ol>
         </section>
 

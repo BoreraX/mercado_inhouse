@@ -57,6 +57,72 @@ button:disabled {
   margin: 0 auto;
 }
 
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.intro-screen.hidden {
+  display: none;
+}
+
+.intro-panel {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 440px);
+  max-height: calc(100vh - 36px);
+  overflow: auto;
+  padding: 18px;
+  color: #ffffff;
+  background: var(--black);
+  border: 1px solid #2c2c2c;
+  border-bottom: 4px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.intro-logo {
+  width: 116px;
+  height: 92px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.intro-panel h1 {
+  margin-bottom: 0;
+  font-size: 1.45rem;
+}
+
+.intro-panel p {
+  margin-bottom: 0;
+}
+
+.intro-steps {
+  display: grid;
+  gap: 9px;
+  margin: 2px 0 0;
+  padding-left: 22px;
+}
+
+.intro-steps li {
+  padding-left: 2px;
+}
+
+.intro-note {
+  color: #f7d6bb;
+  font-weight: 700;
+}
+
+.intro-button {
+  width: 100%;
+  margin-top: 4px;
+}
+
 .app-header {
   display: flex;
   gap: 12px;
