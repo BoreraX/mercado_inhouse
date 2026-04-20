@@ -1,7 +1,7 @@
 const CONFIG = {
   dataFile: "produtos.csv",
   fallbackDataFiles: ["data/produtos.csv"],
-  adminWhatsApp: "5511999999999",
+  adminWhatsApp: "5519991065503",
   pixKey: "pix@mercadinhodocondominio.com.br",
   receiverName: "Mercado RESIDENCIAL ALTO DO PRATA",
 };
