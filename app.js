@@ -1,5 +1,5 @@
 const CONFIG = {
-  dataFile: "data/produtos.csv",
+  dataFile: "produtos.csv",
   adminWhatsApp: "5511999999999",
   pixKey: "pix@mercadinhodocondominio.com.br",
   receiverName: "Mercado RESIDENCIAL ALTO DO PRATA",

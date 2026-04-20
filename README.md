@@ -23,17 +23,14 @@ App_Mercado/
 ├── index.html
 ├── styles.css
 ├── app.js
-├── assets/
-│   └── logo-inhouse-market.svg
-├── data/
-│   └── produtos.csv
-└── scripts/
-    └── import_planogram.py
+├── logo-inhouse-market.svg
+├── produtos.csv
+└── import_planogram.py
 ```
 
 ## Como testar localmente
 
-Como a página lê `data/produtos.csv`, abra por um servidor local:
+Como a página lê `produtos.csv`, abra por um servidor local:
 
 ```powershell
 python -m http.server 4173
@@ -53,7 +50,7 @@ Edite o bloco `CONFIG` no começo de `app.js`:
 
 ```js
 const CONFIG = {
-  dataFile: "data/produtos.csv",
+  dataFile: "produtos.csv",
   adminWhatsApp: "5511999999999",
   pixKey: "pix@mercadinhodocondominio.com.br",
   receiverName: "Mercado RESIDENCIAL ALTO DO PRATA",
@@ -66,7 +63,7 @@ const CONFIG = {
 
 ## Trocar a base de produtos
 
-O app usa o arquivo `data/produtos.csv`. Substitua esse arquivo pela planilha exportada em CSV, mantendo estes cabeçalhos:
+O app usa o arquivo `produtos.csv`. Substitua esse arquivo pela planilha exportada em CSV, mantendo estes cabeçalhos:
 
 ```csv
 Codigo de Barras;Nome do Produto;Status;Preço Final (consumidor);Qtd.Estoque;Data de vencimento
@@ -80,12 +77,12 @@ Regras da base:
 - O código de barras é opcional. Se estiver vazio, o produto ainda aparece.
 - Nesta primeira versão, estoque e vencimento ficam na base, mas não bloqueiam a venda.
 
-No Excel ou Google Sheets, salve/exporte a planilha como CSV e coloque o arquivo novo em `data/produtos.csv`.
+No Excel ou Google Sheets, salve/exporte a planilha como CSV e coloque o arquivo novo em `produtos.csv`.
 
 Se você receber a base em `.xlsx` no mesmo formato do planograma, também pode usar o conversor incluído:
 
 ```powershell
-python scripts/import_planogram.py "C:\Users\JP_Desenvolvimento\Downloads\planogram-2026-03-02.xlsx" data\produtos.csv
+python import_planogram.py "C:\Users\JP_Desenvolvimento\Downloads\planogram-2026-03-02.xlsx" produtos.csv
 ```
 
 Depois publique novamente a pasta do projeto. O app lê o CSV atualizado automaticamente quando a página carrega.
