@@ -30,6 +30,7 @@ function cacheElements() {
   elements.introStartButton = document.querySelector("#intro-start-button");
   elements.cartSummary = document.querySelector("#cart-summary");
   elements.cartTotal = document.querySelector("#cart-total");
+  elements.pixTotal = document.querySelector("#pix-total");
   elements.cartItems = document.querySelector("#cart-items");
   elements.cartPanel = document.querySelector("#cart-panel");
   elements.cartOverlay = document.querySelector("#cart-overlay");
@@ -380,6 +381,7 @@ function renderCart() {
     ? `${quantity} ${quantity === 1 ? "item" : "itens"} · ${formatCurrency(total)}`
     : "Vazia";
   elements.cartTotal.textContent = formatCurrency(total);
+  elements.pixTotal.textContent = formatCurrency(total);
   elements.whatsappButton.disabled = quantity === 0;
 
   if (!quantity) {
@@ -443,7 +445,7 @@ function sendWhatsAppOrder() {
 
   const items = Array.from(state.cart.values()).map(({ product, quantity: itemQuantity }) => {
     const subtotal = product.price * itemQuantity;
-    return `- ${itemQuantity}x ${product.name} - ${formatCurrency(subtotal)}`;
+    return `* ${itemQuantity}x ${product.name} - ${formatCurrency(subtotal)}`;
   });
 
   const message = [
@@ -453,11 +455,7 @@ function sendWhatsAppOrder() {
     "",
     `Total: ${formatCurrency(total)}`,
     "",
-    `Chave Pix: ${CONFIG.pixKey}`,
-    `Recebedor: ${CONFIG.receiverName}`,
-    "",
     "Após o pagamento, vou enviar o comprovante por aqui.",
-    "Disponibilidade sujeita à conferência.",
   ].join("\n");
 
   const phone = CONFIG.adminWhatsApp.replace(/\D/g, "");

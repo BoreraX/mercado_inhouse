@@ -489,8 +489,8 @@ h3 {
 
 .pix-box {
   display: grid;
-  gap: 10px;
-  padding: 12px;
+  gap: 12px;
+  padding: 14px;
   background: #fff8ef;
   border: 1px solid #f1c29a;
   border-radius: 8px;
@@ -517,6 +517,28 @@ h3 {
   margin: 0;
   overflow-wrap: anywhere;
   font-weight: 800;
+}
+
+.pix-total-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  color: #ffffff;
+  background: var(--black);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+}
+
+.pix-total-line span {
+  font-weight: 800;
+}
+
+.pix-total-line strong {
+  font-size: 1.45rem;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .checkout-note {
